@@ -1,0 +1,13 @@
+/node_modules
+
+/build
+/coverage
+/dist
+/log
+/browser
+
+.env
+google-cloud.json
+
+
+
