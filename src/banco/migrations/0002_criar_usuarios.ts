@@ -10,7 +10,7 @@ export async function up(knex: Knex) {
       table.bigIncrements('id');
       table.uuid('uuid').index().unique().notNullable().checkLength('=', 36).checkRegex(Util.UuidV4.regexUuidV4String);
 
-      table.bigInteger('empresa_id').notNullable().references('id').inTable(ETableNames.empresas).onUpdate('RESTRICT').onDelete('RESTRICT');
+      table.bigInteger('empresa_id').notNullable().unsigned().references('id').inTable(ETableNames.empresas).onUpdate('RESTRICT').onDelete('RESTRICT');
 
       table.string('nome', 120).notNullable();
       table.string('email', 120).unique().notNullable();
