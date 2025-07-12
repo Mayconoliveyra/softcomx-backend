@@ -11,7 +11,7 @@ export const seed = async (knex: Knex) => {
     return;
   } else {
     await knex(ETableNames.empresas)
-      .insert([{ id: 1, nome: 'teste', registro: '123', cnpj_cpf: '123' }])
+      .insert([{ id: '0d2fa944-102e-4f65-bd3a-920f0dc62b47', nome: 'SOFTCOM TESTE', registro: '53539', cnpj_cpf: '99999999000191' }])
       .then(() => {
         console.log(`DEV - Inserido dados na tabela ${ETableNames.empresas}`);
       });

@@ -12,10 +12,9 @@ export async function up(knex: Knex) {
       table.integer('codigo').notNullable().unique().unsigned();
       table.string('cnpj');
       table.string('nome').notNullable();
-      table.string('sellerId');
       table.string('url_logo').notNullable();
 
-      table.boolean('desativado').defaultTo(false);
+      table.boolean('ativo').defaultTo(true);
 
       table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
       table.timestamp('updated_at').defaultTo(knex.raw('NULL ON UPDATE CURRENT_TIMESTAMP'));

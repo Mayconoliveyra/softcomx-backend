@@ -1,11 +1,13 @@
 export interface IUsuario {
+  id: number;
   uuid: string;
+
+  empresa_id: number;
 
   nome: string;
   email: string;
   senha: string;
   ativo: boolean;
-  empresa_id: number;
 
   created_at: string;
   updated_at?: string;

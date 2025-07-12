@@ -8,10 +8,12 @@ export async function up(knex: Knex) {
   return knex.schema
     .createTable(ETableNames.cadastros_atributos, (table) => {
       table.bigIncrements('id');
+
       table.string('codigo', 24).notNullable().index().unique();
       table.string('nome').notNullable();
       table.enum('atributo', ['COR', 'TAMANHO', 'SABOR', 'POTENCIA', 'VOLTAGEM']).notNullable();
-      table.boolean('desativado').defaultTo(false);
+
+      table.boolean('ativo').defaultTo(false);
 
       table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
       table.timestamp('updated_at').defaultTo(knex.raw('NULL ON UPDATE CURRENT_TIMESTAMP'));

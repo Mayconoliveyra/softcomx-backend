@@ -1,9 +1,11 @@
 export interface ICadastroAtributo {
-  id: bigint;
+  id: number;
+
   codigo: string;
   nome: string;
   atributo: 'COR' | 'TAMANHO' | 'SABOR' | 'POTENCIA' | 'VOLTAGEM';
-  desativado: boolean;
+
+  ativo: boolean;
 
   created_at: string;
   updated_at?: string;

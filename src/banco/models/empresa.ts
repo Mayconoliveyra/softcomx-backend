@@ -1,47 +1,17 @@
 export interface IEmpresa {
   id: number;
+  uuid: string;
 
   registro: string;
   nome: string;
   cnpj_cpf: string;
 
-  erp: 'SOFTSHOP' | 'SOFTCOMSHOP';
-
-  ss_qrcode_url?: string | null;
-  ss_url?: string | null;
-  ss_client_id?: string | null;
-  ss_client_secret?: string | null;
-  ss_empresa_nome?: string | null;
-  ss_empresa_cnpj?: string | null;
-  ss_token?: string | null;
-  ss_token_exp: number;
-
-  mc_usuario?: string | null;
-  mc_senha?: string | null;
-  mc_empresa_id?: string | null;
-  mc_empresa_nome?: string | null;
-  mc_empresa_cnpj?: string | null;
-  mc_token?: string | null;
-  mc_token_exp: number;
-
-  sh_qrcode_url?: string | null;
-  sh_url?: string | null;
-  sh_client_id?: string | null;
-  sh_client_secret?: string | null;
-  sh_empresa_nome?: string | null;
-  sh_empresa_cnpj?: string | null;
-  sh_token?: string | null;
-  sh_token_exp: number;
-
-  api_im_client_id?: string | null;
-  api_im_client_secret?: string | null;
-  api_im_empresa_id?: string | null;
-  api_im_empresa_nome?: string | null;
-  api_im_empresa_cnpj?: string | null;
+  pm4_token?: string | null;
+  pm4_token_renovacao?: string | null;
+  pm4_token_exp: number;
+  prox_sinc_p4m_token: number;
 
   ativo: boolean;
-
-  prox_sinc_sh_token: number;
 
   created_at: string;
   updated_at?: string;
