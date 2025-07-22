@@ -6,12 +6,12 @@ import { ETableNames } from '../eTableNames';
 
 export async function up(knex: Knex) {
   return knex.schema
-    .createTable(ETableNames.cadastros_atributos, (table) => {
+    .createTable(ETableNames.tipo_categoria, (table) => {
       table.bigIncrements('id');
+      table.bigInteger('tipo_canal_id').unsigned().notNullable().references('id').inTable(ETableNames.tipo_canal).onUpdate('RESTRICT').onDelete('RESTRICT');
 
-      table.string('codigo', 24).notNullable().index().unique();
+      table.string('codigo').notNullable().index().unique();
       table.string('nome').notNullable();
-      table.enum('atributo', ['COR', 'TAMANHO', 'SABOR', 'POTENCIA', 'VOLTAGEM']).notNullable();
 
       table.boolean('ativo').defaultTo(false);
 
@@ -19,12 +19,12 @@ export async function up(knex: Knex) {
       table.timestamp('updated_at').defaultTo(knex.raw('NULL ON UPDATE CURRENT_TIMESTAMP'));
     })
     .then(() => {
-      Util.Log.info(`# Criado tabela ${ETableNames.cadastros_atributos}`);
+      Util.Log.info(`# Criado tabela ${ETableNames.tipo_categoria}`);
     });
 }
 
 export async function down(knex: Knex) {
-  return knex.schema.dropTable(ETableNames.cadastros_atributos).then(() => {
-    Util.Log.info(`# Excluído tabela ${ETableNames.cadastros_atributos}`);
+  return knex.schema.dropTable(ETableNames.tipo_categoria).then(() => {
+    Util.Log.info(`# Excluído tabela ${ETableNames.tipo_categoria}`);
   });
 }

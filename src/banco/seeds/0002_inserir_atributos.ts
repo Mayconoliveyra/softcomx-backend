@@ -7,7 +7,7 @@ const { NODE_ENV } = process.env;
 export const seed = async (knex: Knex) => {
   if (NODE_ENV === 'production') return;
 
-  const result = await knex(ETableNames.cadastros_atributos).first();
+  const result = await knex(ETableNames.tipo_atributo).first();
   if (result) {
     return;
   } else {
@@ -19,10 +19,10 @@ export const seed = async (knex: Knex) => {
       { id: 5, codigo: '5e021f22ea047f0001d51bc1', nome: 'H1', atributo: 'POTENCIA', ativo: true },
     ];
 
-    await knex(ETableNames.cadastros_atributos)
+    await knex(ETableNames.tipo_atributo)
       .insert(atributos)
       .then(() => {
-        console.log(`DEV - Inserido dados na tabela ${ETableNames.cadastros_atributos}`);
+        console.log(`DEV - Inserido dados na tabela ${ETableNames.tipo_atributo}`);
       });
   }
 };

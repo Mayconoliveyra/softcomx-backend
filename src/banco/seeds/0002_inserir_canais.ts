@@ -6,7 +6,7 @@ const { NODE_ENV } = process.env;
 export const seed = async (knex: Knex) => {
   if (NODE_ENV === 'production') return;
 
-  const result = await knex(ETableNames.cadastros_canais).first();
+  const result = await knex(ETableNames.tipo_canal).first();
   if (result) {
     return;
   } else {
@@ -521,10 +521,10 @@ export const seed = async (knex: Knex) => {
       ativo: true,
     }));
 
-    await knex(ETableNames.cadastros_canais)
+    await knex(ETableNames.tipo_canal)
       .insert(dadosFormatados)
       .then(() => {
-        console.log(`DEV - Inserido dados na tabela ${ETableNames.cadastros_canais}`);
+        console.log(`DEV - Inserido dados na tabela ${ETableNames.tipo_canal}`);
       });
   }
 };

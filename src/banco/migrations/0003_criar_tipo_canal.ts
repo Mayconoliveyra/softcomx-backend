@@ -6,12 +6,12 @@ import { ETableNames } from '../eTableNames';
 
 export async function up(knex: Knex) {
   return knex.schema
-    .createTable(ETableNames.cadastros_canais, (table) => {
+    .createTable(ETableNames.tipo_canal, (table) => {
       table.bigIncrements('id');
 
       table.integer('codigo').notNullable().unique().unsigned();
-      table.string('cnpj');
       table.string('nome').notNullable();
+      table.string('cnpj');
       table.string('url_logo').notNullable();
 
       table.boolean('ativo').defaultTo(true);
@@ -20,12 +20,12 @@ export async function up(knex: Knex) {
       table.timestamp('updated_at').defaultTo(knex.raw('NULL ON UPDATE CURRENT_TIMESTAMP'));
     })
     .then(() => {
-      Util.Log.info(`# Criado tabela ${ETableNames.cadastros_canais}`);
+      Util.Log.info(`# Criado tabela ${ETableNames.tipo_canal}`);
     });
 }
 
 export async function down(knex: Knex) {
-  return knex.schema.dropTable(ETableNames.cadastros_canais).then(() => {
-    Util.Log.info(`# Excluído tabela ${ETableNames.cadastros_canais}`);
+  return knex.schema.dropTable(ETableNames.tipo_canal).then(() => {
+    Util.Log.info(`# Excluído tabela ${ETableNames.tipo_canal}`);
   });
 }
