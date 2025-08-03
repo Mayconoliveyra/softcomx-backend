@@ -28,7 +28,7 @@ export async function up(knex: Knex) {
 
       table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
       table.timestamp('updated_at').defaultTo(knex.raw('NULL ON UPDATE CURRENT_TIMESTAMP'));
-      table.timestamp('deleted_at').notNullable().defaultTo(knex.fn.now());
+      table.timestamp('deleted_at');
     })
     .then(() => {
       Util.Log.info(`# Criado tabela ${ETableNames.produto_anuncio_canal}`);
